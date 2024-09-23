@@ -3,6 +3,8 @@ package com.gtnewhorizons.materialslib;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.gtnewhorizons.materialslib.proxy.CommonProxy;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -22,8 +24,8 @@ public class MaterialsLib {
     public static final Logger LOG = LogManager.getLogger(MODID);
 
     @SidedProxy(
-        clientSide = "com.gtnewhorizons.materialslib.ClientProxy",
-        serverSide = "com.gtnewhorizons.materialslib.CommonProxy")
+        clientSide = "com.gtnewhorizons.materialslib.proxy.ClientProxy",
+        serverSide = "com.gtnewhorizons.materialslib.proxy.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler

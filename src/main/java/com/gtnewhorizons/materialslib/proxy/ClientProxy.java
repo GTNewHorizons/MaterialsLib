@@ -1,4 +1,4 @@
-package com.gtnewhorizons.materialslib;
+package com.gtnewhorizons.materialslib.proxy;
 
 public class ClientProxy extends CommonProxy {
 

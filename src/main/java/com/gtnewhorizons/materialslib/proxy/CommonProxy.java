@@ -1,4 +1,4 @@
-package com.gtnewhorizons.materialslib;
+package com.gtnewhorizons.materialslib.proxy;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
