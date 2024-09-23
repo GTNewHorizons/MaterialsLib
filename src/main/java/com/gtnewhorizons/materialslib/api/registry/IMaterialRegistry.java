@@ -3,6 +3,7 @@ package com.gtnewhorizons.materialslib.api.registry;
 import java.util.Collection;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import com.gtnewhorizons.materialslib.api.material.Material;
 
@@ -19,4 +20,10 @@ public interface IMaterialRegistry {
 
     @NotNull
     String getModId();
+
+    @Nullable
+    Material getMaterial(@NotNull String name);
+
+    @Nullable
+    Material getMaterial(int id);
 }
