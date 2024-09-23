@@ -10,4 +10,6 @@ public class MaterialsAPI {
 
     /** Available at the Construction stage. */
     public static IMaterialRegistryManager materialManager;
+
+    public static final int REGISTRY_MAXIMUM = Short.MAX_VALUE;
 }

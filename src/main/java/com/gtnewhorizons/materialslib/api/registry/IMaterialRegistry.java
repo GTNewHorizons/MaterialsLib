@@ -12,7 +12,7 @@ import com.gtnewhorizons.materialslib.api.material.Material;
  */
 public interface IMaterialRegistry {
 
-    void register(Material material);
+    void register(@NotNull Material material);
 
     @NotNull
     Collection<Material> getAllMaterials();

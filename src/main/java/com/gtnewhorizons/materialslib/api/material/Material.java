@@ -3,6 +3,8 @@ package com.gtnewhorizons.materialslib.api.material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+import org.jetbrains.annotations.NotNull;
+
 import com.gtnewhorizons.materialslib.api.type.IItemProvider;
 import com.gtnewhorizons.materialslib.api.type.IMaterialType;
 
@@ -39,5 +41,13 @@ public final class Material implements IItemProvider {
     @Override
     public ItemStack get(IMaterialType type) {
         return null; // todo
+    }
+
+    public int getId() {
+        return metaItemSubId;
+    }
+
+    public @NotNull String getName() {
+        return resourceLocation.getResourcePath();
     }
 }
