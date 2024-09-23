@@ -22,6 +22,7 @@ public final class MaterialRegistryManager implements IMaterialRegistryManager {
 
     private final Object2ObjectMap<String, MaterialRegistry> registries = new Object2ObjectOpenHashMap<>();
 
+    private IMaterialRegistry fallbackRegistry;
     private Phase registrationPhase = Phase.PRE;
 
     private MaterialRegistryManager() {}
@@ -44,17 +45,30 @@ public final class MaterialRegistryManager implements IMaterialRegistryManager {
         MaterialLog.debug.info("Creating new material registry --- {}", modid);
         MaterialRegistry registry = new MaterialRegistry(modid);
         registries.put(modid, registry);
+
+        if (fallbackRegistry == null) {
+            MaterialLog.debug.info("Assigning fallback registry --- {}", modid);
+            fallbackRegistry = registry;
+        }
         return registry;
     }
 
     @Override
     public @NotNull IMaterialRegistry getRegistry(@NotNull String modid) {
-        return null; // todo
+        MaterialRegistry registry = registries.get(modid);
+        if (registry == null) {
+            MaterialLog.debug
+                .warn("Registry {} not found, providing fallback registry --- {}", modid, fallbackRegistry.getModId());
+            return fallbackRegistry;
+        }
+        return fallbackRegistry;
     }
 
     @Override
     public @NotNull Collection<@NotNull IMaterialRegistry> getRegistries() {
-        // todo limit to after PRE phase?
+        if (getPhase() == Phase.PRE) {
+            throw new IllegalStateException("Cannot get all material registries during phase " + getPhase());
+        }
         return ObjectCollections.unmodifiable(registries.values());
     }
 
