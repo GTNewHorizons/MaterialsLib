@@ -1,0 +1,36 @@
+SourceSet materialsTestSet = null
+
+sourceSets {
+    materialsTestSet = create("materialsTest") {
+        java {
+            srcDir("src/materialsTest/java")
+            compileClasspath += sourceSets.patchedMc.output + sourceSets.main.output
+        }
+    }
+}
+
+configurations { configs ->
+    named(materialsTestSet.compileClasspathConfigurationName).configure {it.extendsFrom(named("compileClasspath").get())}
+    named(materialsTestSet.runtimeClasspathConfigurationName).configure {it.extendsFrom(named("runtimeClasspath").get())}
+    named(materialsTestSet.annotationProcessorConfigurationName).configure {it.extendsFrom(named("annotationProcessor").get())}
+}
+
+tasks.register(materialsTestSet.jarTaskName, Jar) {
+    from(materialsTestSet.output)
+    archiveClassifier.set("materialsTests")
+    archiveVersion.set("1.0")
+    destinationDirectory.set(new File(buildDir, "tmp"))
+}
+tasks.named("assemble").configure {
+    dependsOn(materialsTestSet.jarTaskName)
+}
+
+tasks.named("runServer", JavaExec).configure {
+    dependsOn(materialsTestSet.jarTaskName)
+    classpath(configurations.named(materialsTestSet.runtimeClasspathConfigurationName), tasks.named(materialsTestSet.jarTaskName))
+}
+
+tasks.named("runClient", JavaExec).configure {
+    dependsOn(materialsTestSet.jarTaskName)
+    classpath(configurations.named(materialsTestSet.runtimeClasspathConfigurationName), tasks.named(materialsTestSet.jarTaskName))
+}
