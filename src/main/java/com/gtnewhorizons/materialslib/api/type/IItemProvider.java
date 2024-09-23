@@ -5,7 +5,8 @@ import net.minecraft.item.ItemStack;
 /**
  * Represents a "provider" which when given a {@link IMaterialType Material Type}, can provide an {@link ItemStack}
  * representation of itself combined with that material type.
- * <br><br>
+ * <br>
+ * <br>
  * For example:
  * <ul>
  * <li>"Aluminium" could be an item provider, which when passed the "gear" material type, provides an Aluminium Gear.

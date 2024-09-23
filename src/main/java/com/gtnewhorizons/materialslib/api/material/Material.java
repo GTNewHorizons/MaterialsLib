@@ -8,9 +8,11 @@ import com.gtnewhorizons.materialslib.api.type.IMaterialType;
 
 /**
  * The main Material class.
- * <br><br>
+ * <br>
+ * <br>
  * Holds all relevant data for creating Material Items, Fluids, and Blocks.
- * <br><br>
+ * <br>
+ * <br>
  * Cannot be extended!
  *
  * @author serenibyss
