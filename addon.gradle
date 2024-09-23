@@ -34,3 +34,9 @@ tasks.named("runClient", JavaExec).configure {
     dependsOn(materialsTestSet.jarTaskName)
     classpath(configurations.named(materialsTestSet.runtimeClasspathConfigurationName), tasks.named(materialsTestSet.jarTaskName))
 }
+
+configurations {
+    implementation {
+        exclude group: "com.google.code.findbugs", module: "jsr305"
+    }
+}

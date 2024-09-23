@@ -2,8 +2,10 @@ package com.gtnewhorizons.materialslib;
 
 import com.gtnewhorizon.gtnhlib.config.ConfigException;
 import com.gtnewhorizon.gtnhlib.config.ConfigurationManager;
+import com.gtnewhorizons.materialslib.api.MaterialsAPI;
 import com.gtnewhorizons.materialslib.config.ConfigHolder;
 import com.gtnewhorizons.materialslib.proxy.CommonProxy;
+import com.gtnewhorizons.materialslib.registry.MaterialRegistryManager;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -33,6 +35,10 @@ public class MaterialsLib {
         } catch (ConfigException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public MaterialsLib() {
+        MaterialsAPI.materialManager = MaterialRegistryManager.getInstance();
     }
 
     @Mod.EventHandler
