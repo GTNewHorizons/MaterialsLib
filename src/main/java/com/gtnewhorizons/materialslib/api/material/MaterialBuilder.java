@@ -11,9 +11,9 @@ import net.minecraft.util.ResourceLocation;
 public class MaterialBuilder {
 
     private final ResourceLocation resourceLocation;
-    private final short metaItemSubId;
+    private final int metaItemSubId;
 
-    protected MaterialBuilder(ResourceLocation resourceLocation, short metaItemSubId) {
+    protected MaterialBuilder(ResourceLocation resourceLocation, int metaItemSubId) {
         this.resourceLocation = resourceLocation;
         this.metaItemSubId = metaItemSubId;
     }

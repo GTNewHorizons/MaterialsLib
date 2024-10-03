@@ -23,18 +23,18 @@ import com.gtnewhorizons.materialslib.api.type.IMaterialType;
 public final class Material implements IItemProvider {
 
     private final ResourceLocation resourceLocation;
-    private final short metaItemSubId;
+    private final int metaItemSubId;
 
-    Material(ResourceLocation resourceLocation, short metaItemSubId) {
+    Material(ResourceLocation resourceLocation, int metaItemSubId) {
         this.resourceLocation = resourceLocation;
         this.metaItemSubId = metaItemSubId;
     }
 
-    public static MaterialBuilder builder(String modId, String name, short id) {
+    public static MaterialBuilder builder(String modId, String name, int id) {
         return builder(new ResourceLocation(modId, name), id);
     }
 
-    public static MaterialBuilder builder(ResourceLocation name, short id) {
+    public static MaterialBuilder builder(ResourceLocation name, int id) {
         return new MaterialBuilder(name, id);
     }
 

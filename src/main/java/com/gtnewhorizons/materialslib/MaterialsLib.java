@@ -10,6 +10,7 @@ import com.gtnewhorizons.materialslib.proxy.CommonProxy;
 import com.gtnewhorizons.materialslib.registry.MaterialRegistryManager;
 
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -44,7 +45,7 @@ public class MaterialsLib {
         MaterialsAPI.materialManager = MaterialRegistryManager.getInstance();
     }
 
-    @Mod.EventHandler
+    @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
 
@@ -65,17 +66,17 @@ public class MaterialsLib {
         /* End Registration */
     }
 
-    @Mod.EventHandler
+    @EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
     }
 
-    @Mod.EventHandler
+    @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
     }
 
-    @Mod.EventHandler
+    @EventHandler
     public void serverStarting(FMLServerStartingEvent event) {
         proxy.serverStarting(event);
     }
