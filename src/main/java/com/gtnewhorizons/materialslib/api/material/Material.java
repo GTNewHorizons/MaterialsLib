@@ -5,6 +5,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.gtnewhorizons.materialslib.api.MaterialsAPI;
 import com.gtnewhorizons.materialslib.api.type.IItemProvider;
 import com.gtnewhorizons.materialslib.api.type.IMaterialType;
 
@@ -28,6 +29,7 @@ public final class Material implements IItemProvider {
     Material(ResourceLocation resourceLocation, int metaItemSubId) {
         this.resourceLocation = resourceLocation;
         this.metaItemSubId = metaItemSubId;
+        register();
     }
 
     public static MaterialBuilder builder(String modId, String name, int id) {
@@ -49,5 +51,14 @@ public final class Material implements IItemProvider {
 
     public @NotNull String getName() {
         return resourceLocation.getResourcePath();
+    }
+
+    public String getModId() {
+        return resourceLocation.getResourceDomain();
+    }
+
+    private void register() {
+        MaterialsAPI.materialManager.getRegistry(getModId())
+            .register(this);
     }
 }

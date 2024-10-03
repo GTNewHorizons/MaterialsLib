@@ -1,20 +1,18 @@
 package com.gtnewhorizons.materialstest;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import com.gtnewhorizons.materialslib.api.event.MaterialEvent;
 import com.gtnewhorizons.materialslib.api.event.MaterialRegistryEvent;
 import com.gtnewhorizons.materialslib.api.registry.IMaterialRegistryManager;
 import com.gtnewhorizons.materialstest.materials.MTMaterials;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLConstructionEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.common.MinecraftForge;
 
-@Mod(
-    modid = MaterialsTest.MODID,
-    version = "1.0",
-    name = MaterialsTest.MODNAME,
-    acceptedMinecraftVersions = "[1.7.10]")
+@Mod(modid = MaterialsTest.MODID, version = "1.0", name = MaterialsTest.MODNAME, acceptedMinecraftVersions = "[1.7.10]")
 public class MaterialsTest {
 
     public static final String MODID = "materialstest";

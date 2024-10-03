@@ -1,5 +1,7 @@
 package com.gtnewhorizons.materialslib;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import com.gtnewhorizon.gtnhlib.config.ConfigException;
 import com.gtnewhorizon.gtnhlib.config.ConfigurationManager;
 import com.gtnewhorizons.materialslib.api.MaterialsAPI;
@@ -16,7 +18,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
     modid = MaterialsLib.MODID,

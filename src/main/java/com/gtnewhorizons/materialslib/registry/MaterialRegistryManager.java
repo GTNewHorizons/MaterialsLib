@@ -88,6 +88,8 @@ public final class MaterialRegistryManager implements IMaterialRegistryManager {
         }
 
         MaterialLog.debug.info("Advancing registration phase --- PRE -> OPEN");
+        registries.values()
+            .forEach(MaterialRegistry::unfreeze);
         registrationPhase = Phase.OPEN;
     }
 

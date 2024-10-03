@@ -1,6 +1,7 @@
 package com.gtnewhorizons.materialslib.api.event;
 
 import com.gtnewhorizons.materialslib.api.registry.IMaterialRegistryManager;
+
 import cpw.mods.fml.common.eventhandler.Event;
 
 /**
