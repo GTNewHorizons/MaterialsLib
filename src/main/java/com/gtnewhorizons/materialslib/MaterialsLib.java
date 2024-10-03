@@ -3,6 +3,8 @@ package com.gtnewhorizons.materialslib;
 import com.gtnewhorizon.gtnhlib.config.ConfigException;
 import com.gtnewhorizon.gtnhlib.config.ConfigurationManager;
 import com.gtnewhorizons.materialslib.api.MaterialsAPI;
+import com.gtnewhorizons.materialslib.api.event.MaterialEvent;
+import com.gtnewhorizons.materialslib.api.event.MaterialRegistryEvent;
 import com.gtnewhorizons.materialslib.config.ConfigHolder;
 import com.gtnewhorizons.materialslib.proxy.CommonProxy;
 import com.gtnewhorizons.materialslib.registry.MaterialRegistryManager;
@@ -13,6 +15,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
     modid = MaterialsLib.MODID,
@@ -44,6 +47,22 @@ public class MaterialsLib {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+
+        /* Begin Registration */
+
+        MaterialRegistryManager managerInternal = (MaterialRegistryManager) MaterialsAPI.materialManager;
+
+        /* Material Registry Registration */
+        MaterialLog.out.info("Registering material registries");
+        MinecraftForge.EVENT_BUS.post(new MaterialRegistryEvent(managerInternal));
+        managerInternal.openRegistries();
+
+        /* Material Registration */
+        MaterialLog.out.info("Registering materials");
+        MinecraftForge.EVENT_BUS.post(new MaterialEvent());
+        managerInternal.freezeRegistries();
+
+        /* End Registration */
     }
 
     @Mod.EventHandler

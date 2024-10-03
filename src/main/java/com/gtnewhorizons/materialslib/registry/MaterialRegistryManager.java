@@ -77,9 +77,23 @@ public final class MaterialRegistryManager implements IMaterialRegistryManager {
         return registrationPhase;
     }
 
-    public void freezeAll() {
+    public void openRegistries() {
         if (!validateCaller()) {
-            MaterialLog.debug.error("Bad caller to MaterialRegistryManager#freezeAll() --- {}", getCaller());
+            MaterialLog.debug.error("Bad caller to MaterialRegistryManager#openRegistries() --- {}", getCaller());
+            return;
+        }
+        switch (getPhase()) {
+            case OPEN -> throw new IllegalStateException("Cannot open registries during the OPEN phase!");
+            case FROZEN -> throw new IllegalStateException("Cannot open registries during the FROZEN phase!");
+        }
+
+        MaterialLog.debug.info("Advancing registration phase --- PRE -> OPEN");
+        registrationPhase = Phase.OPEN;
+    }
+
+    public void freezeRegistries() {
+        if (!validateCaller()) {
+            MaterialLog.debug.error("Bad caller to MaterialRegistryManager#freezeRegistries() --- {}", getCaller());
             return;
         }
         switch (getPhase()) {
@@ -87,7 +101,7 @@ public final class MaterialRegistryManager implements IMaterialRegistryManager {
             case FROZEN -> throw new IllegalStateException("Cannot freeze registries during the FROZEN phase!");
         }
 
-        MaterialLog.debug.info("Freezing all registries --- OPEN -> FROZEN");
+        MaterialLog.debug.info("Advancing registration phase --- OPEN -> FROZEN");
         registries.values()
             .forEach(MaterialRegistry::freeze);
         registrationPhase = Phase.FROZEN;
