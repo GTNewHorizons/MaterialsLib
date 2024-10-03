@@ -13,6 +13,8 @@ public class MaterialLog {
     public static final Logger out = LogManager.getLogger(MaterialsLib.MODNAME);
     /** Debug Logger - Only logs if {@link ConfigHolder#debug} is enabled, no checks needed! */
     public static final Logger debug = LogManager.getLogger(MaterialsLib.MODNAME + "/debug");
+    /** Test Logger - Only for internal use during development */
+    public static final Logger testing = LogManager.getLogger(MaterialsLib.MODNAME + "/testing");
 
     static {
         updateDebugLog();
