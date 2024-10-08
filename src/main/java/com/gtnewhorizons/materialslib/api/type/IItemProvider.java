@@ -20,5 +20,5 @@ import net.minecraft.item.ItemStack;
 @FunctionalInterface
 public interface IItemProvider {
 
-    ItemStack get(IMaterialType type);
+    ItemStack get(IMaterialType<?> type);
 }

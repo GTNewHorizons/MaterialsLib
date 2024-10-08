@@ -53,6 +53,21 @@ public final class Material implements IItemProvider {
         return resourceLocation.getResourcePath();
     }
 
+    public @NotNull String getUpperName() {
+        String name = getName();
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < name.length(); i++) {
+            char c = name.charAt(i);
+            if (c == '_') continue;
+            if (i == 0 || name.charAt(i - 1) == '_') {
+                result.append(Character.toUpperCase(c));
+            } else {
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+
     public String getModId() {
         return resourceLocation.getResourceDomain();
     }
